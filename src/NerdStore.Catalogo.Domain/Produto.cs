@@ -15,6 +15,11 @@ namespace NerdStore.Catalogo.Domain
         public Dimensoes Dimensoes { get; private set; }
         public Categoria Categoria { get; private set; }
 
+        protected Produto()
+        {
+            
+        }
+
         public Produto(string nome, string descricao, bool ativo, decimal valor, Guid categoriaId, DateTime dataCadastro, string imagem, Dimensoes dimensoes)
         {
             Nome = nome;
@@ -74,6 +79,9 @@ namespace NerdStore.Catalogo.Domain
     {
         public string Nome { get; private set; }
         public int Codigo { get; set; }
+
+        // EF Relation
+        public ICollection<Produto> Produtos { get; set; }
 
         public Categoria(string nome, int codigo)
         {
